@@ -16,8 +16,20 @@
  * @param {number} x
  * @return {boolean}
  */
+解法1：
 var isPalindrome = function(x) {
     if(x < 0) return false;
     var y = x.toString().split('').reverse().join('');
-    return x == y ? true : false;
+    return x == y;
+};
+
+解法2：
+var isPalindrome = function(x) {
+    if(x < 0 || (x % 10 === 0 && x !== 0)) return false;
+    var y = 0;
+    while(x > y){
+        y = y * 10 + x % 10;
+        x = Math.floor(x / 10);
+    }
+    return x === y || x === Math.floor(y / 10);
 };
